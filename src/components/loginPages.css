@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Open+Sans:wght@400;600&display=swap');
+
+.SignIn, .SignUp{
+    font-family: 'Open Sans', sans-serif;
+}
+
+#custom2:focus{
+    border-color: #f48fb1;
+    box-shadow: 0 0 0 0.2rem rgb(255,192,203)
+}
+
+#signInWithGoogle:hover {
+    background-color: #e53935;
+}
+
+#signIn:hover {
+    background-color: #4caf50;
+}
+
