@@ -10,6 +10,7 @@ import { IconButton } from '@material-ui/core';
 const GridImages = ({photos, setSelectedImg}) => {
 
     const download = async (id) => {
+        console.log('hello')
         let url = "https://api.unsplash.com/photos/?client_id="+process.env.REACT_APP_UNSPLASH_API_KEY+"&"+id+"/download"
         let res = await fetch(url)
         let response = await res.json()
@@ -18,19 +19,32 @@ const GridImages = ({photos, setSelectedImg}) => {
 
 
     const LikeButton = (item) => {
-        if(item.selected){
+        if(item.liked_by_user){
             return(
-                <IconButton style={{color:'#f50057', fontSize:'18px'}} onClick={() => console.log(item)}>
+            <IconButton style={{color:'#f50057', fontSize:'18px'}} onClick={() => likeAction(item)}>
                 <FavoriteIcon/>
             </IconButton>
             )
         }
         else{
             return(
-                <IconButton style={{color:'#757575', fontSize:'18px'}} onClick={() => console.log(item)}>
+                <IconButton style={{color:'#757575', fontSize:'18px'}} onClick={() => likeAction(item)}>
                 <FavoriteBorderIcon/>
             </IconButton>
             )
+        }
+    }
+
+    const likeAction = async(item) => {
+        // item.liked_by_user = !item.liked_by_user
+        if(!item.liked_by_user){
+            console.log(item.item.id)
+            const res = await fetch(`https://api.unsplash.com/photos/:${item.item.id}?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}/like`, {
+                method:'POST',
+                // Authorization: 'Client-ID 1lBCHcgi0-khQZwmixmCYbz6eB0YI4hC6Nhfvw6UDkI'
+            })
+            console.log(await res.json())
+            // console.log(item)
         }
     }
 
@@ -51,12 +65,7 @@ const GridImages = ({photos, setSelectedImg}) => {
                         />
                         <div class="card-body">
                             <div className="action">
-                                        {/* {item.liked_by_user && <IconButton style={{color:'#757575', fontSize:'18px'}} onClick={() => imageAction(item)}>
-                                            <FavoriteBorderIcon/>
-                                        </IconButton>} 
-                                        {!item.liked_by_user && <IconButton style={{color:'#f50057', fontSize:'18px'}} onClick={() => imageAction(item)}>
-                                            <FavoriteIcon/>
-                                        </IconButton>}   */}
+                                    
                                         <LikeButton item = {item}/>
                                         <a href={item.links.download+ "?force=true"} className="btn btn-sm btn-light border-0 rounded-lg" onClick={() => download(item.id)}>
                                             <i className="fas fa-arrow-down custom-icon" style={{color:"#689f38"}}></i> 

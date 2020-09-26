@@ -70,7 +70,7 @@ const SignIn = () =>{
             </div>
             {!loadingOne && <button id="signIn" style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In</button>}
             {loadingOne && <button style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" disabled>
-            <span class="spinner-grow spinner-grow-sm px-1" role="status" aria-hidden="true"></span>
+            <span class="spinner-grow spinner-grow-sm pr-1" role="status" aria-hidden="true"></span>
                 Loading...
             </button>}
             <div className="text-center">
@@ -90,7 +90,7 @@ const SignIn = () =>{
               <i class="fab fa-google px-2"></i>
             </button>}
             {loadingTwo && <button style={{backgroundColor:'#ef5350', color:'#fff'}} className="btn col-12 mt-2 mb-2" disabled>
-            <span className="spinner-grow spinner-grow-sm px-1" role="status" aria-hidden="true"></span>
+            <span className="spinner-grow spinner-grow-sm pr-1" role="status" aria-hidden="true"></span>
                 Loading...
             </button>}
             <p className="text-center my-2">
