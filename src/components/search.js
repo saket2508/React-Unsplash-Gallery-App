@@ -3,7 +3,7 @@ import React from 'react';
 const Search = ({props}) => {
 
     const handleChange = (e) => {
-        if(e.key==="Enter"){
+        if(e.key==="Enter" && e.target.value!=""){
             props.search()
         }
     }
@@ -14,7 +14,7 @@ const Search = ({props}) => {
                 id="custom"
                 className="form-control" 
                 type="text" 
-                placeholder="Canada" 
+                placeholder="California" 
                 value={props.term}
                 onChange={e => props.setTerm(e.target.value)}
                 onKeyPress={handleChange}

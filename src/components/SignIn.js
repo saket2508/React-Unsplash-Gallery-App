@@ -70,7 +70,7 @@ const SignIn = () =>{
             </div>
             {!loadingOne && <button id="signIn" style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In</button>}
             {loadingOne && <button style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" disabled>
-            <span class="spinner-grow spinner-grow-sm pr-1" role="status" aria-hidden="true"></span>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                 Loading...
             </button>}
             <div className="text-center">

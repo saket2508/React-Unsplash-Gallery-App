@@ -22,7 +22,7 @@ export default function Title({ userName, auth }){
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{color:'#f48fb1', fontSize:'2rem;'}}><i className="fa fa-user"></i><span className="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Your Collection</a>
+                                {/* <a class="dropdown-item" href="#">Your Collection</a> */}
                                 <a class="dropdown-item" href="#" onClick={() => {auth.signOut()}}>Sign Out</a>
                             </div>
                     </div>
