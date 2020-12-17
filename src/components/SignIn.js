@@ -49,9 +49,9 @@ const SignIn = () =>{
     return(
        <div className="SignIn">
             <div className="container-fluid">
-          <div style={{marginTop:'50px'}} className ="col-12 col-sm-6 mx-auto shadow bg-white rounded-lg">
+          <div style={{marginTop:'50px'}} className ="col-12 col-sm-6 mx-auto shadow rounded-lg signInForm">
           <form className="px-4 py-4" noValidate>
-          <div style={{fontSize:'22px', color:'#f48fb1', fontWeight:'600', letterSpacing:'1.0'}} className="text-center">PinGram</div>
+          <div style={{fontSize:'22px',fontWeight:'600', letterSpacing:'1.0'}} className="formHeading text-center">PinGram</div>
             <div className="form-group mt-2">
                 <label style={{fontWeight:'400', fontSize:'15px'}} for="exampleInputEmail1">Email address</label>
                 {(error===null&&errorEmpty===null) && <input type="email" id="custom2" name="userEmail" placeholder="Eg: john.doe@gmail.com" className="form-control" onChange={event => onChangeHandler(event)}/>}
@@ -68,7 +68,7 @@ const SignIn = () =>{
                     Enter all fields correctly
                 </div>}
             </div>
-            {!loadingOne && <button id="signIn" style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In</button>}
+            {!loadingOne && <button id="signIn" style={{color:"#fff", backgroundColor:'#388e3c'}} type="submit" className="btn col-12 mt-2 mb-2" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>Sign In</button>}
             {loadingOne && <button style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" disabled>
             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                 Loading...
@@ -76,7 +76,7 @@ const SignIn = () =>{
             <div className="text-center">
                 or
             </div>
-           {!loadingTwo && <button type="submit" id="signInGoogle" style={{backgroundColor:'#ef5350', color:'#fff'}} className="btn col-12 mt-2 mb-2"  onClick={() => {
+           {!loadingTwo && <button type="submit" id="signInGoogle" style={{color:'#fff', backgroundColor:'#d32f2f'}} className="btn col-12 mt-2 mb-2"  onClick={() => {
             try{
                 setLoadingTwo(true)
                 signInWithGoogle();

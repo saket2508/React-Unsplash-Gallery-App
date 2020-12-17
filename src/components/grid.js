@@ -73,7 +73,7 @@ const GridImages = ({photos, setSelectedImg}) => {
                                 </div>
                                 <div className="photo-header mt-1 mb-1">Photo by <a href={item.user.links.html}>{item.user.name}</a> on <a href="https://unsplash.com/">Unsplash</a></div>
                                 {item.description && <p class="card-text">{item.description}</p>}
-                                <div className="tags mt-1">
+                                <div className="tags mt-1" style={{display:'flex', flexWrap:'wrap'}}>
                                     {item.tags.map((tag) => (
                                         <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag.title}</span>
                                     ))}

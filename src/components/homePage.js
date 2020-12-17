@@ -16,7 +16,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 const url= 'https://pixabay.com/api/'
 
 
-function HomePage() {
+function HomePage({ darkModeToggle, theme }) {
 
   const user = useContext(UserContext);
   // console.log(user)
@@ -98,7 +98,7 @@ function HomePage() {
 
   return (
     <div className="app">
-      <Title userName = {displayName} auth={auth}/>
+      <Title userName = {displayName} auth={auth} darkModeToggle = {darkModeToggle} theme={theme}/>
       <Search props={{
         term: term,
         search: search,
@@ -123,7 +123,7 @@ function HomePage() {
             // </div>
               <figure class="figure">
               <img src={image.largeImageURL} class="figure-img img-fluid rounded" alt="..."/>
-              <figcaption class="figure-caption">
+              <figcaption class="figure-caption d-flex flex-row flex-wrap">
                 {image.tags.split(", ").map((tag) => (
                   <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag}</span>
                 ))}

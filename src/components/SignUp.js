@@ -49,9 +49,9 @@ const SignUp = () => {
     return(
         <div className="SignUp">
             <div className="container-fluid">
-          <div style={{marginTop:'50px'}} className ="col-12 col-sm-6 mx-auto shadow bg-white rounded-lg">
+          <div style={{marginTop:'50px'}} className ="col-12 col-sm-6 mx-auto shadow rounded-lg signUpForm">
           <form className="px-4 py-4" noValidate>
-            <div style={{fontSize:'22px', color:'#f48fb1', fontWeight:'600', letterSpacing:'1.0'}} className="text-center">PinGram</div>
+            <div style={{fontSize:'22px', fontWeight:'600', letterSpacing:'1.0'}} className="formHeading text-center">PinGram</div>
           <div class="form-group mt-2">
                 <label style={{fontSize:'15px', fontWeight:'400'}} for="displayName">Display Name</label>
                 {error===null && <input id="custom2" type="text" placeholder="Eg: John Doe" name="displayName" class="form-control" onChange={event => onChangeHandler(event)}/>}
@@ -70,7 +70,7 @@ const SignUp = () => {
                     Enter all fields correctly
                 </div>}
             </div>
-           {!loadingOne && <button id="signIn" style={{backgroundColor:'#66bb6a', color:"#fff"}} type="submit" className="btn col-12 mt-2 mb-2" onClick={event => {
+           {!loadingOne && <button id="signIn" style={{color:"#fff", backgroundColor:'#388e3c'}} type="submit" className="btn col-12 mt-2 mb-2" onClick={event => {
               createUserWithEmailAndPasswordHandler(event, email, password);
             }}>Sign Up</button>}
             {loadingOne && <button type="button" className="btn col-12 mt-2 mb-2" style={{backgroundColor:'#81c784', color:"#fff"}} disabled>
@@ -80,7 +80,7 @@ const SignUp = () => {
                 or
             </div>
 
-            {!loadingTwo && <button id="signInWithGoogle" type="submit" style={{backgroundColor:'#ef5350', color:'#fff'}} className="btn col-12 mt-2 mb-2"  onClick={() => {
+            {!loadingTwo && <button id="signInWithGoogle" type="submit" style={{color:'#fff', backgroundColor:'#d32f2f'}} className="btn col-12 mt-2 mb-2"  onClick={() => {
               try {
                 setLoadingTwo(true)
                 signInWithGoogle();
@@ -101,7 +101,7 @@ const SignUp = () => {
 
             <p className="text-center my-2">
                 Already have an account?{" "}
-                <Link to="/" className="text-primary">
+                <Link to={process.env.PUBLIC_URL} className="text-primary">
                     Sign in here
                 </Link>{" "}
                 <br />{" "}
