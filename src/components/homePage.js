@@ -13,7 +13,8 @@ import { FlashOffTwoTone } from '@material-ui/icons';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-const url= 'https://pixabay.com/api/'
+// const url= 'https://pixabay.com/api/'
+const url = 'https://api.unsplash.com/' //UNSPLASH
 
 
 function HomePage({ darkModeToggle, theme }) {
@@ -22,7 +23,9 @@ function HomePage({ darkModeToggle, theme }) {
   // console.log(user)
   const { photoURL, displayName, email } = user;
 
-  const key = "19529048-a0442e53b19277dfa094f6e1f"
+  // const key = "19529048-a0442e53b19277dfa094f6e1f"
+  const key = "1lBCHcgi0-khQZwmixmCYbz6eB0YI4hC6Nhfvw6UDkI";
+
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
   const [selectedImg, setSelectedImg] = useState(null)
@@ -34,21 +37,21 @@ function HomePage({ darkModeToggle, theme }) {
     setPage(page+1)
     if(term === ''){
       setLoading(true)
-      fetch(`${url}?key=${key}&q=California&image_type=photo&page=${page}`)
+      fetch(`${url}/search/photos?client_id=${key}&query=California&page=${page}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setImages(images.concat(data.hits))
+        setImages(images.concat(data.results))
         setLoading(false)
       })
     }
     else{
       setLoading(true)
-      fetch(`${url}?key=${key}&q=${term}&image_type=photo&page=${page}`)
+      fetch(`${url}search/photos?client_id=${key}&query=${term}&page=${page}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        setImages(images.concat(data.hits))
+        setImages(images.concat(data.results))
         setLoading(false)
       })
     }
@@ -56,12 +59,12 @@ function HomePage({ darkModeToggle, theme }) {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`${url}?key=${key}&q=California&image_type=photo`)
+    fetch(`${url}/search/photos?client_id=${key}&query=California`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
         // let copy = createCopy(data.results)
-        setImages(data.hits)
+        setImages(data.results)
         setLoading(false)
       })
       .then(err => {
@@ -75,10 +78,10 @@ function HomePage({ darkModeToggle, theme }) {
     setPage(1)
     try{
       setLoading(true)
-      let res = await fetch(`${url}?key=${key}&q=${term}&image_type=photo`)
+      let res = await fetch(`${url}/search/photos?client_id=${key}&query=${term}`)
       let data = await res.json()
       console.log(data)
-      setImages(data.hits)
+      setImages(data.results)
       setLoading(false)
     }
     catch(error){
@@ -95,6 +98,21 @@ function HomePage({ darkModeToggle, theme }) {
   //     selected: false       
   // }));
   // }
+
+  const Image = ({image})  => {
+    return(
+      <div className="content">
+         <a href={image.links.html} target="_blank">
+           <div className="content-overlay"></div>
+           <img className="content-image figure-img img-fluid rounded" src={image.urls.regular}/>
+           <div class="content-details fadeIn-bottom">
+            {/* <h3 class="content-title">This is a title</h3> */}
+            <p class="content-text">Photo by {image.user.name} on Unsplash</p>
+          </div>
+         </a>
+      </div>
+    )
+  }
 
   return (
     <div className="app">
@@ -121,14 +139,17 @@ function HomePage({ darkModeToggle, theme }) {
             // <div key={index} className="card border-0">
             //   <img className="card-img-top" src={image.largeImageURL}/>
             // </div>
+            <a href={image.links.html} target="_blank">
               <figure class="figure">
-              <img src={image.largeImageURL} class="figure-img img-fluid rounded" alt="..."/>
-              <figcaption class="figure-caption d-flex flex-row flex-wrap">
-                {image.tags.split(", ").map((tag) => (
-                  <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag}</span>
+              <img src={image.urls.regular} class="figure-img img-fluid rounded" alt="..."/>
+              {/* <Image image={image}/> */}
+              {image.tags && <figcaption class="figure-caption d-flex flex-row justify-content-center flex-wrap">
+                {image.tags.map((tag) => (
+                  <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag.title}</span>
                 ))}
-              </figcaption>
+              </figcaption>}
             </figure>
+            </a>
           ))}
           </div>
       </div>

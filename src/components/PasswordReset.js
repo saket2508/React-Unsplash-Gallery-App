@@ -54,7 +54,7 @@ const PasswordReset = () =>{
                         </form>
                     </div>
                     {emailHasBeenSent && <div className="d-flex justify-content-center">
-                        <div class="alert alert-success col-6 mt-4" role="alert">
+                        <div class="alert alert-success col-md-6 col-sm-12 mt-4" role="alert">
                         An email has been sent to you!
                         </div>
                 </div>}
