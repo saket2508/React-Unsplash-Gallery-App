@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/React-Unsplash-Gallery-App/static/css/main.4159badc.chunk.css",
-    "main.js": "/React-Unsplash-Gallery-App/static/js/main.07c0fcd5.chunk.js",
-    "main.js.map": "/React-Unsplash-Gallery-App/static/js/main.07c0fcd5.chunk.js.map",
+    "main.css": "/React-Unsplash-Gallery-App/static/css/main.7defee11.chunk.css",
+    "main.js": "/React-Unsplash-Gallery-App/static/js/main.9d9c1633.chunk.js",
+    "main.js.map": "/React-Unsplash-Gallery-App/static/js/main.9d9c1633.chunk.js.map",
     "runtime-main.js": "/React-Unsplash-Gallery-App/static/js/runtime-main.ca0e6272.js",
     "runtime-main.js.map": "/React-Unsplash-Gallery-App/static/js/runtime-main.ca0e6272.js.map",
     "static/js/2.db19c45e.chunk.js": "/React-Unsplash-Gallery-App/static/js/2.db19c45e.chunk.js",
     "static/js/2.db19c45e.chunk.js.map": "/React-Unsplash-Gallery-App/static/js/2.db19c45e.chunk.js.map",
     "index.html": "/React-Unsplash-Gallery-App/index.html",
-    "precache-manifest.f17fd41b77710bb3818cf7438c8f7a12.js": "/React-Unsplash-Gallery-App/precache-manifest.f17fd41b77710bb3818cf7438c8f7a12.js",
+    "precache-manifest.aa33ebe977715675a46c163a648b8bc0.js": "/React-Unsplash-Gallery-App/precache-manifest.aa33ebe977715675a46c163a648b8bc0.js",
     "service-worker.js": "/React-Unsplash-Gallery-App/service-worker.js",
-    "static/css/main.4159badc.chunk.css.map": "/React-Unsplash-Gallery-App/static/css/main.4159badc.chunk.css.map",
+    "static/css/main.7defee11.chunk.css.map": "/React-Unsplash-Gallery-App/static/css/main.7defee11.chunk.css.map",
     "static/js/2.db19c45e.chunk.js.LICENSE.txt": "/React-Unsplash-Gallery-App/static/js/2.db19c45e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ca0e6272.js",
     "static/js/2.db19c45e.chunk.js",
-    "static/css/main.4159badc.chunk.css",
-    "static/js/main.07c0fcd5.chunk.js"
+    "static/css/main.7defee11.chunk.css",
+    "static/js/main.9d9c1633.chunk.js"
   ]
 }
