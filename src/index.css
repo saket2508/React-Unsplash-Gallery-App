@@ -157,6 +157,7 @@ label:hover{
 }
 
 .fa-user{
+  font-size: 1.2rem;
   /* color:var(--primary); */
 }
 
@@ -229,8 +230,8 @@ label:hover{
 .switch {
   position: relative;
   display: inline-block;
-  width: 30px;
-  height: 17px;
+  width: 36px;
+  height: 20.4px;
 }
 
 /* Hide default HTML checkbox */
@@ -256,10 +257,10 @@ label:hover{
 .slider:before {
   position: absolute;
   content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
+  height: 15.6px;
+  width: 15.6px;
+  left: 2.4px;
+  bottom: 2.4px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -274,14 +275,14 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
+  -webkit-transform: translateX(15.4px);
+  -ms-transform: translateX(15.4px);
+  transform: translateX(15.4px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 13px;
+  border-radius: 15.4px;
 }
 
 .slider.round:before {

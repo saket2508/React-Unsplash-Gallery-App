@@ -12,9 +12,9 @@ const Search = ({props}) => {
         <div style={{marginBottom:'20px'}} className="col-9 col-md-6 mx-auto">
             <input 
                 id="custom"
-                className="form-control" 
+                className="form-control form-control-lg" 
                 type="text" 
-                placeholder="California" 
+                placeholder="Cat pictures UwU" 
                 value={props.term}
                 onChange={e => props.setTerm(e.target.value)}
                 onKeyPress={handleChange}

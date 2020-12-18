@@ -37,7 +37,7 @@ function HomePage({ darkModeToggle, theme }) {
     setPage(page+1)
     if(term === ''){
       setLoading(true)
-      fetch(`${url}/search/photos?client_id=${key}&query=California&page=${page}`)
+      fetch(`${url}/search/photos?client_id=${key}&query=Cats&page=${page}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -59,7 +59,7 @@ function HomePage({ darkModeToggle, theme }) {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`${url}/search/photos?client_id=${key}&query=California`)
+    fetch(`${url}/search/photos?client_id=${key}&query=Cats`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
