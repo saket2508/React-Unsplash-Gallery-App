@@ -161,9 +161,6 @@ label:hover{
   /* color:var(--primary); */
 }
 
-.caret{
-  /* background-color:var(--primary); */
-}
 
 .icon{
   font-size: 1.2rem;
@@ -207,7 +204,7 @@ label:hover{
 } */
 
 .photo-header{
-  font-size: 16;
+  font-size: 15;
   font-weight: 500;
   color: #444;
 }
@@ -304,7 +301,7 @@ input:checked + .slider:before {
   .content .content-overlay {
     background: rgba(0,0,0,0.7);
     position: absolute;
-    height: 99%;
+    height: 100%;
     width: 100%;
     left: 0;
     top: 0;

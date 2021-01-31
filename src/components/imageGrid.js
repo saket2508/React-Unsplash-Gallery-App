@@ -6,7 +6,7 @@ const ImageGrid = ({ setSelectedImg }) => {
     console.log(docs)
 
     return(
-        <div className="image-grid">
+        <div className="hide-mobile image-grid">
             {docs && docs.map(doc => (
                 <div key={doc.id} className="img-wrap"
                     onClick={() => setSelectedImg(doc.url)}>

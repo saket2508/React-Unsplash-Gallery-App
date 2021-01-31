@@ -64,13 +64,13 @@ const GridImages = ({photos, setSelectedImg}) => {
                             transition={{delay:1}}
                         />
                         <div class="card-body">
-                            <div className="action">
+                            {/* <div className="action">
                                     
-                                        <LikeButton item = {item}/>
+                                        <LikeButton/>
                                         <a href={item.links.download+ "?force=true"} className="btn btn-sm btn-light border-0 rounded-lg" onClick={() => download(item.id)}>
                                             <i className="fas fa-arrow-down custom-icon" style={{color:"#689f38"}}></i> 
                                         </a>
-                                </div>
+                                </div> */}
                                 <div className="photo-header mt-1 mb-1">Photo by <a href={item.user.links.html}>{item.user.name}</a> on <a href="https://unsplash.com/">Unsplash</a></div>
                                 {item.description && <p class="card-text">{item.description}</p>}
                                 <div className="tags mt-1" style={{display:'flex', flexWrap:'wrap'}}>

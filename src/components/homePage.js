@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Title from './title';
 import Search from'./search';
-import UploadForm from './uploadForm'; 
-import ImageGrid from './imageGrid';
 import Modal from './modal';
-import GridImages from './grid';
 import { UserContext } from '../providers/userProvider';
 import { auth } from '../firebase/config';
 import '../index.css';
-import { setLogLevel } from 'firebase';
-import { FlashOffTwoTone } from '@material-ui/icons';
+import { useMediaQuery } from 'react-responsive'
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { motion } from 'framer-motion';
+import { IconButton } from '@material-ui/core';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Button from '@material-ui/core/Button';
+
 
 
 // const url= 'https://pixabay.com/api/'
@@ -22,6 +24,15 @@ function HomePage({ darkModeToggle, theme }) {
   const user = useContext(UserContext);
   // console.log(user)
   const { photoURL, displayName, email } = user;
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 1224px)'
+  })
+
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: '(max-device-width: 1224px)'
+  })
+
 
   // const key = "19529048-a0442e53b19277dfa094f6e1f"
   const key = "1lBCHcgi0-khQZwmixmCYbz6eB0YI4hC6Nhfvw6UDkI";
@@ -104,7 +115,7 @@ function HomePage({ darkModeToggle, theme }) {
       <div className="content">
          <a href={image.links.html} target="_blank">
            <div className="content-overlay"></div>
-           <img className="content-image figure-img img-fluid rounded" src={image.urls.regular}/>
+           <img className="content-image" src={image.urls.regular}/>
            <div class="content-details fadeIn-bottom">
             {/* <h3 class="content-title">This is a title</h3> */}
             <p class="content-text">Photo by {image.user.name} on Unsplash</p>
@@ -113,6 +124,14 @@ function HomePage({ darkModeToggle, theme }) {
       </div>
     )
   }
+
+  const download = async (id) => {
+    console.log('hello')
+    let url = "https://api.unsplash.com/photos/?client_id="+process.env.REACT_APP_UNSPLASH_API_KEY+"&"+id+"/download"
+    let res = await fetch(url)
+    let response = await res.json()
+    console.log(response)
+};
 
   return (
     <div className="app">
@@ -134,16 +153,14 @@ function HomePage({ darkModeToggle, theme }) {
         }
         >
           <div className="container-fluid mt-4" style={{overflow:'auto'}}>
-        <div className="card-columns">
+        
+       { isDesktopOrLaptop && <> <div className="card-columns">
           {images.map((image, index) => (
-            // <div key={index} className="card border-0">
-            //   <img className="card-img-top" src={image.largeImageURL}/>
-            // </div>
             <a href={image.links.html} target="_blank">
               <figure class="figure">
-              <img src={image.urls.regular} class="figure-img img-fluid rounded" alt="..."/>
-              {/* <Image image={image}/> */}
-              {image.tags && <figcaption class="figure-caption d-flex flex-row justify-content-center flex-wrap">
+              {/* <img src={image.urls.regular} class="figure-img img-fluid rounded" alt="..."/> */}
+              <Image image={image}/>
+              {image.tags && <figcaption class="figure-caption d-flex flex-row justify-content-center flex-wrap mt-1">
                 {image.tags.map((tag) => (
                   <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag.title}</span>
                 ))}
@@ -151,7 +168,72 @@ function HomePage({ darkModeToggle, theme }) {
             </figure>
             </a>
           ))}
-          </div>
+          </div> </>}
+
+          {isTabletOrMobileDevice && <><div className="card-columns">
+          {images.map((image, index) => (
+            <a href={image.links.html} target="_blank">
+              {theme === "light" && <><div className="card cardTheme">
+              <img src={image.urls.small} className="card-img-top" onClick={() => setSelectedImg(image.urls.regular)}/>
+                        <div class="card-body">
+                            <div className="action">
+                            {/* <IconButton style={{color:'#f50057', fontSize:'18px'}} onClick={() => {}}>
+                                <FavoriteIcon/>
+                            </IconButton> */}
+                             {/* <IconButton size="medium" style={{color:'#444', fontSize:'18px', border:'0.7px solid #444'}} onClick={() => {}}>
+                                  <FavoriteBorderIcon/>
+                              </IconButton> */}
+                                        {/* <a href={image.links.download+ "?force=true"} className="btn btn-sm btn-light border-0 rounded-lg" onClick={() => download(image.id)}>
+                                            <i className="fas fa-arrow-down custom-icon" style={{color:"#689f38"}}></i> 
+                                        </a> */}
+                            {/* <Button size="small" style={{color:'#444', fontWeight:'600', border:'0.7px solid #444'}}>
+                                DOWNLOAD
+                            </Button> */}
+                          
+                                </div>
+                                <div className="photo-header mt-1 mb-1">Photo by <a href={image.user.links.html}>{image.user.name}</a> on <a href="https://unsplash.com/">Unsplash</a></div>
+                                {/* {item.description && <p class="card-text">{item.description}</p>} */}
+                                <div className="tags mt-2" style={{display:'flex', flexWrap:'wrap'}}>
+                                    {image.tags.map((tag) => (
+                                        <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag.title}</span>
+                                    ))}
+                                </div>
+                        </div>
+              </div></>}
+              
+              {theme === "dark" && <><div className="card rounded cardTheme">
+              <img src={image.urls.small} className="card-img-top" onClick={() => setSelectedImg(image.urls.regular)}/>
+                        <div class="card-body">
+                            <div className="action">
+                                    
+                              {/* <IconButton style={{color:'#f50057', fontSize:'18px'}} onClick={() => {}}>
+                                  <FavoriteIcon/>
+                              </IconButton> */}
+
+                              {/* <IconButton size="medium" style={{color:'#fff', fontSize:'18px', border:'0.7px solid #fff'}} onClick={() => {}}>
+                                  <FavoriteBorderIcon/>
+                              </IconButton> */}
+                                        {/* <a href={image.links.download+ "?force=true"} className="btn btn-sm btn-light border-0 rounded-lg" onClick={() => download(image.id)}>
+                                            <i className="fas fa-arrow-down custom-icon" style={{color:"#689f38"}}></i> 
+                                        </a> */}
+                              {/* <Button size="small" style={{color:'#fff', fontWeight:'600', border:'0.7px solid #fff'}}>
+                                DOWNLOAD
+                              </Button> */}
+                                </div>
+                                <div className="photo-header mt-1 mb-1">Photo by <a href={image.user.links.html}>{image.user.name}</a> on <a href="https://unsplash.com/">Unsplash</a></div>
+                                {/* {item.description && <p class="card-text">{item.description}</p>} */}
+                                <div className="tags mt-2" style={{display:'flex', flexWrap:'wrap'}}>
+                                    {image.tags.map((tag) => (
+                                        <span className='tag px-3 py-1 mr-2 rounded-pill'>#{tag.title}</span>
+                                    ))}
+                                </div>
+                        </div>
+              </div></>}
+              
+            </a>
+          ))}
+          </div></>}
+        
       </div>
       </InfiniteScroll>
       {selectedImg && <Modal selectedImg = {selectedImg} setSelectedImg = {setSelectedImg}/>}

@@ -62,6 +62,16 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.formColor}
   }
 
+  .cardTheme {
+    background-color: ${({ theme }) => theme.formColor}
+  }
+
+  .cardTheme .photo-header, .cardTheme a{
+    color: ${({ theme }) => theme.text};
+    font-family: Raleway, sans-serif;
+    size
+  }
+
   .signInForm {
     background-color: ${({ theme }) => theme.formColor}
   }
