@@ -1,4 +1,4 @@
-# FireSplash
+# PinGram
 
 
 #### Instagram like gallery app made with React.js using Unsplash's API. I have used tailwind.css for styling and firebase for user-authentication.
@@ -6,6 +6,7 @@
 #### Screenshots
 
 ![App screenshot 1](screenshots/screenshot_1.png)
+
 ![App screenshot 2](screenshots/screenshot_2.png)
 
 
